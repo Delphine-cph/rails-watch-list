@@ -7,14 +7,13 @@
 
 <h1><%= @list.name %></h1>
 
-<p><%= link_to "Add a movie", new_list_bookmark_path(@list) %></p>
+<p><%= link_to "Add a comment", new_list_bookmark_path(@list) %></p>
 
 <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <li><h3><%= bookmark.movie.title %> - <%= bookmark.movie.rating %> </h3>
     <%= bookmark.movie.overview %>
-    <p>"<%= bookmark.comment %>"</p></li>
+    <p>"<%= bookmark.comment %>"</p>
+    <p><%= link_to "Delete", bookmark_path(bookmark), method: :delete, data: { confirm: "Are you sure?" } %></p></li>
   <% end %>
 </ul>
-
-<p><%= link_to "Delete", bookmark_path(@list), method: :delete, data: { confirm: "Are you sure?" } %></p>
