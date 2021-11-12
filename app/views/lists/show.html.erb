@@ -7,20 +7,24 @@
     <p><%= link_to "Add a comment", new_list_bookmark_path(@list), class: "btn btn-gradient" %></p>
   </div>
 
-  <div class="d-flex align-items-center justify-content-between mb-3">
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="card-trip">
-      <%= image_tag bookmark.movie.poster_url %>
-      <div class="card-trip-infos">
-        <div>
-        <h2><%= bookmark.movie.title %> ( <%= bookmark.movie.rating %> ⭐️ )</h2>
-        <p><%= bookmark.movie.overview %></p>
-        <p><i class="fas fa-quote-right"></i> <%= bookmark.comment.capitalize %></p>
+  <ul>
+    <div class="row my-5">
+      <% @list.bookmarks.each do |bookmark| %>
+      <div class="col-4">
+        <div class="card-trip">
+          <%= image_tag bookmark.movie.poster_url %>
+            <div class="card-trip-infos">
+              <div>
+                <h2><strong><%= bookmark.movie.title %></strong> ( <%= bookmark.movie.rating %> ⭐️ )</h2>
+                <p><%= bookmark.movie.overview %></p>
+                <p><i class="fas fa-quote-right"></i> <%= bookmark.comment.capitalize %></p>
+              </div>
+            </div>
         </div>
       </div>
+      <% end %>
     </div>
-  <% end %>
-  </div>
+  </ul>
 
   <%= link_to "Back", root_path, class: "btn btn-ghost" %>
 </div>
